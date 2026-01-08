@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Admission Portal</title>
+    <style>
+        :root {
+            --primary-color: #1a365d; /* Academic Navy */
+            --secondary-color: #c05621; /* Accent Orange */
+            --bg-color: #f7fafc;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: #718096;
+            margin-top: 5px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        section h2 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        section h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+            margin-left: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+        }
+
+        .btn-container {
+            margin-top: 40px;
+            text-align: right;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2c5282;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>University Admission Portal</h1>
+            <p>Academic Year 2025-2026 Registration</p>
+        </header>
+
+        <form id="admissionForm" onsubmit="event.preventDefault(); alert('Application Submitted Successfully!');">
+            
+            <!-- Personal Information -->
+            <section>
+                <h2>Personal Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Enter last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender *</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not">Prefer not to say</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Information -->
+            <section>
+                <h2>Contact Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="example@university.edu">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="address">Permanent Address *</label>
+                        <textarea id="address" name="address" rows="3" required placeholder="Street, City, State, ZIP Code"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Academic Information -->
+            <section>
+                <h2>Academic Background</h2>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="school">Last School/College Attended *</label>
+                        <input type="text" id="school" name="school" required placeholder="High School or Previous College Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="gpa">Final Grade/GPA *</label>
+                        <input type="text" id="gpa" name="gpa" required placeholder="e.g. 3.8/4.0">
+                    </div>
+                    <div class="form-group">
+                        <label for="gradYear">Year of Graduation *</label>
+                        <input type="number" id="gradYear" name="gradYear" min="1990" max="2026" required placeholder="YYYY">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Program Selection -->
+            <section>
+                <h2>Admission Preferences</h2>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="program">Interested Program/Major *</label>
+                        <select id="program" name="program" required>
+                            <option value="">Select a Program</option>
+                            <option value="cs">B.S. Computer Science</option>
+                            <option value="ee">B.E. Electrical Engineering</option>
+                            <option value="ba">B.A. Business Administration</option>
+                            <option value="md">Pre-Medical Studies</option>
+                            <option value="psych">B.S. Psychology</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="statement">Personal Statement (Optional)</label>
+                        <textarea id="statement" name="statement" rows="4" placeholder="Tell us why you want to join our university..."></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <div class="btn-container">
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
